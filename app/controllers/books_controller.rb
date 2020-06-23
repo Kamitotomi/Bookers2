@@ -31,7 +31,7 @@ class BooksController < ApplicationController
     redirect_to book_path(@book.id)
   else
     @books = Book.all
-    @user = current_user
+    
     render action: :index #indexにするとuserが引っかかってエラー。必要な記述は？
   end
 end
