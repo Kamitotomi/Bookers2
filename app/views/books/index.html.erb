@@ -4,11 +4,11 @@
 		<div class="row">
 			<div class="col-xs-3">
 				<%= render 'users/cope', user: current_user %>
-				<!-- 新規投稿部分（共通テンプレ？） -->
+				<!-- 新規投稿部分（共通テンプレ） -->
 				<%= render 'books/list', book: @book %>
 			</div>
 
-			<!-- ログインユーザーの投稿一覧 -->
+			<!-- 投稿一覧 -->
 
 			<%= render 'index', books: @books%>
 			
