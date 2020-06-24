@@ -21,13 +21,35 @@
 			<div class="col-xs-9">
 				<h2>Book detail</h2>
 
-				<%= render 'detail', book: @book %>
+				<table class="table table-hover table-inverse">
+					
+					<thead>
+						<tr>
+							<th></th>
+							<th>Title</th>
+							<th>Opinion</th>
+							<th colspan="3"></th>
+						</tr>
+					</thead>
+					<!-- 繰り返さない -->
+					
+						<tbody>
+							<tr>
+								
+								
+								<%= render 'detail', book: @book %>
+							
+
+							</tr>
+						</tbody>
+					
+				</table>
 				
 
 				<%= render 'comment', book_comments: @book.book_comments %>
 
 
-				<%= form_for [@book, @book_comment] do |f| %>
+				<%= form_with model:[@book, @book_comment], data: {remote: true} do |f| %>
 					<%= f.text_area :comment,  rows:'5', class: "form-control",placeholder: "コメントをここに" %>
   					<%= f.submit 'コメントする' %>
 				<% end %>
