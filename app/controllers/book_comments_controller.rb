@@ -11,19 +11,22 @@ class BookCommentsController < ApplicationController
     		flash[:success] = "Comment was successfully created."
     		redirect_to book_path(@book)
 		else
-			book_comments = BookComment.where(book_id: @book.id)
-    		render '/books/show'
+			book_comments = BookComment.where(book_id: @book)
     	end
 
   	end
 
 
 	def destroy
-		
-		BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
-    	redirect_to book_path(params[:book_id])
-
-	end
+    	@book_comment = BookComment.find(params[:book_id])
+    	@book = @book_comment.book
+    	if @book_comment.user != current_user
+      redirect_to request.referer
+    	else
+    		@book_comment.destroy
+    	end
+    
+  	end
 
 	private
 

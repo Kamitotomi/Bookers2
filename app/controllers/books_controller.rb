@@ -54,7 +54,7 @@ end
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path
+    redirect_to books_url
   end
 
 def correct_user

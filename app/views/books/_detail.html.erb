@@ -16,13 +16,13 @@
 						<td>
           
           					<% if book.favorited_by?(current_user) %>
-            					<%= link_to book_favorites_path(book, redirect_id: 0), method: :delete do %>
+            					<%= link_to book_favorites_path(book, redirect_id: 0), method: :delete, remote: true do %>
               					<span class="glyphicon glyphicon-heart"><%= book.favorites.count%></span>
             					<% end %>
           								
           						<% else %>
             							
-            					<%= link_to book_favorites_path(book, redirect_id: 0), method: :post do %>
+            					<%= link_to book_favorites_path(book, redirect_id: 0), method: :post, remote: true do %>
               					<span class="glyphicon glyphicon-heart-empty"><%= book.favorites.count %></span>
             					<% end %>
           					<% end %>
@@ -31,11 +31,9 @@
 						<td>コメント数:<%= book.book_comments.count %></td>
 								
 						<% if book.user == current_user %>
-						<td><%= link_to "Edit", edit_book_path(book) %></td>
-								
-					<td><%= link_to "Destroy", book_path(book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+  							<td><%= link_to 'Edit', edit_book_path(book), class: "btn-sm btn-success edit_book_#{book.id}" %></td>
+  							<td><%= link_to 'Destroy', book, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger destroy_book_#{book.id}"%></td>
 						<% end %>
-								
 								
 							
 

@@ -8,13 +8,13 @@
         					<td>
           
           						<% if book.favorited_by?(current_user) %>
-            						<%= link_to book_favorites_path(book, redirect_id: 0), method: :delete do %>
+            						<%= link_to book_favorites_path(book, redirect_id: 0), method: :delete, remote: true do %>
               						<span class="glyphicon glyphicon-heart"><%= book.favorites.count%></span>
             						<% end %>
           								
           							<% else %>
             							
-            						<%= link_to book_favorites_path(book, redirect_id: 0), method: :post do %>
+            						<%= link_to book_favorites_path(book, redirect_id: 0), method: :post, remote: true do %>
               						<span class="glyphicon glyphicon-heart-empty"><%= book.favorites.count %></span>
             						<% end %>
           						<% end %>

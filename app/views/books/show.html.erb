@@ -34,7 +34,7 @@
 					<!-- 繰り返さない -->
 					
 						<tbody>
-							<tr>
+							<tr class="book_<%= @book.id %>">
 								
 								
 								<%= render 'detail', book: @book %>
@@ -45,9 +45,9 @@
 					
 				</table>
 				
-
-				<%= render 'comment', book_comments: @book.book_comments %>
-
+				<table class="show-tb comment_<%= @book.id %>">
+					<%= render 'comment', book_comments: @book.book_comments %>
+				</table>
 
 				<%= form_with model:[@book, @book_comment], data: {remote: true} do |f| %>
 					<%= f.text_area :comment,  rows:'5', class: "form-control",placeholder: "コメントをここに" %>
